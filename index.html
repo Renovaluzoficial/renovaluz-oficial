@@ -3,9 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Renova Luz | Conexão de Energia</title>
     
-    <!-- Tipografia e Ícones Premium -->
+    <!-- Título e Identidade Visual -->
+    <title>Renova Luz | Conectando Energias</title>
+    <meta name="description" content="Acesse os canais oficiais da Renova Luz e Renovatech.">
+    
+    <!-- Favicon Automático (Usando seu Logo) -->
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="apple-touch-icon" href="images/logo.png">
+
+    <!-- Fontes Premium & Ícones -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -13,16 +20,16 @@
 
     <style>
         /* ==========================================================================
-           SISTEMA DE CORES DINÂMICO (Design System)
+           DESIGN SYSTEM DINÂMICO (APPLE STYLE)
            ========================================================================== */
         
         :root {
-            /* PADRÃO: MODO CLARO (Sistema Apple Clean) */
+            /* MODO CLARO (Default - Clean & Crisp) */
             --primary: #018a13;
-            --primary-glow: rgba(1, 138, 19, 0.3);
-            --bg-overlay: rgba(255, 255, 255, 0.85);
+            --primary-glow: rgba(1, 138, 19, 0.4);
+            --bg-overlay: rgba(255, 255, 255, 0.88);
             --text-color: #004800;
-            --glass-bg: rgba(255, 255, 255, 0.4);
+            --glass-bg: rgba(255, 255, 255, 0.5);
             --glass-border: rgba(1, 138, 19, 0.2);
             --card-hover: rgba(1, 138, 19, 0.08);
             --qr-bg: #004800;
@@ -32,7 +39,7 @@
 
         @media (prefers-color-scheme: dark) {
             :root {
-                /* AUTOMÁTICO: MODO ESCURO (Energy Mode) */
+                /* MODO ESCURO (Deep Energy) */
                 --bg-overlay: linear-gradient(180deg, rgba(0, 40, 0, 0.8) 0%, rgba(0, 0, 0, 0.95) 100%);
                 --primary: #018a13;
                 --primary-glow: rgba(1, 138, 19, 0.6);
@@ -47,7 +54,7 @@
         }
 
         /* ==========================================================================
-           RESET E ESTRUTURA
+           ESTRUTURA E CORE
            ========================================================================== */
 
         * {
@@ -69,7 +76,6 @@
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Background Video */
         .video-container {
             position: fixed;
             top: 0;
@@ -92,36 +98,36 @@
             width: 100%;
             height: 100%;
             background: var(--bg-overlay);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             z-index: -1;
             transition: background 0.8s ease;
         }
 
         /* ==========================================================================
-           COMPONENTES
+           HEADER & LOGO
            ========================================================================== */
 
         .header {
-            padding: 60px 20px 30px;
+            padding: 50px 20px 30px;
             text-align: center;
             z-index: 1;
         }
 
         .logo-profile {
-            width: 135px;
-            height: 135px;
+            width: 130px;
+            height: 130px;
             background: #ffffff;
             border-radius: 50%;
             padding: 22px;
-            margin: 0 auto 20px;
+            margin: 0 auto 18px;
             display: flex;
             align-items: center;
             justify-content: center;
             border: 4px solid var(--logo-border);
-            box-shadow: 0 0 40px var(--primary-glow);
-            animation: pulse 3s infinite ease-in-out;
-            transition: border 0.5s ease;
+            box-shadow: 0 0 35px var(--primary-glow);
+            animation: pulse 3.5s infinite ease-in-out;
+            transition: border 0.5s ease, box-shadow 0.5s ease;
         }
 
         .logo-profile img {
@@ -131,28 +137,31 @@
         }
 
         .header h1 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 800;
             letter-spacing: -1px;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
+            text-transform: capitalize;
         }
 
         .header p {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             opacity: 0.8;
             font-weight: 400;
-            max-width: 280px;
-            margin: 0 auto;
+            letter-spacing: 0.5px;
         }
 
-        /* Links Grid */
+        /* ==========================================================================
+           LISTA DE LINKS (GRID)
+           ========================================================================== */
+
         .container {
-            width: 90%;
-            max-width: 420px;
+            width: 92%;
+            max-width: 410px;
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            padding-bottom: 50px;
+            gap: 14px;
+            padding-bottom: 40px;
             z-index: 1;
         }
 
@@ -162,37 +171,37 @@
             color: var(--text-color);
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
-            padding: 20px 25px;
-            border-radius: 20px;
+            padding: 18px 25px;
+            border-radius: 18px;
             display: flex;
             align-items: center;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.95rem;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             overflow: hidden;
         }
 
         .link-item i {
-            width: 30px;
-            font-size: 1.3rem;
+            width: 28px;
+            font-size: 1.2rem;
             margin-right: 15px;
             color: var(--primary);
             text-align: center;
         }
 
         .link-item:hover {
-            transform: scale(1.05);
+            transform: scale(1.04);
             background: var(--card-hover);
             border-color: var(--primary);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.1);
         }
 
-        /* Destaque: Site Oficial */
+        /* Destaque: Site Oficial com Brilho */
         .btn-highlight {
             background: var(--primary) !important;
             color: #ffffff !important;
             border: none;
-            box-shadow: 0 15px 35px var(--primary-glow);
+            box-shadow: 0 12px 30px var(--primary-glow);
         }
 
         .btn-highlight i { color: #ffffff !important; }
@@ -204,55 +213,59 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.4), transparent);
             transform: rotate(45deg);
-            animation: shimmer 3.5s infinite;
+            animation: shimmer 4s infinite;
         }
 
-        /* QR Code Placa Minimalista */
+        /* ==========================================================================
+           RODAPÉ E QR CODE
+           ========================================================================== */
+
         .qr-card {
             background: var(--qr-bg);
-            padding: 30px;
-            border-radius: 28px;
+            padding: 25px;
+            border-radius: 24px;
             text-align: center;
-            margin-top: 25px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            margin-top: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
             width: fit-content;
             align-self: center;
             transition: all 0.5s ease;
         }
 
         .qr-card img {
-            width: 150px;
-            height: 150px;
-            border-radius: 12px;
-            margin-bottom: 15px;
+            width: 140px;
+            height: 140px;
+            border-radius: 10px;
+            margin-bottom: 12px;
         }
 
         .qr-card p {
             color: var(--qr-text);
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 800;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
         }
 
         footer {
-            margin: 60px 0 40px;
-            font-size: 0.75rem;
-            opacity: 0.5;
+            margin: 50px 0 30px;
+            font-size: 0.7rem;
+            opacity: 0.6;
             text-align: center;
             letter-spacing: 1px;
+            font-weight: 400;
             z-index: 1;
         }
 
         /* ==========================================================================
-           ANIMATIONS
+           ANIMATIONS & REVEAL
            ========================================================================== */
 
         @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 25px var(--primary-glow); }
-            50% { box-shadow: 0 0 50px var(--primary); transform: scale(1.02); }
+            0%, 100% { box-shadow: 0 0 20px var(--primary-glow); }
+            50% { box-shadow: 0 0 45px var(--primary); transform: scale(1.01); }
         }
 
         @keyframes shimmer {
@@ -262,8 +275,8 @@
 
         .reveal {
             opacity: 0;
-            transform: translateY(25px);
-            animation: revealAnim 0.8s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
+            transform: translateY(20px);
+            animation: revealAnim 0.7s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
         @keyframes revealAnim {
@@ -283,7 +296,7 @@
 </head>
 <body>
 
-    <!-- Background Engine -->
+    <!-- Video Background Engine -->
     <div class="video-container">
         <video autoplay muted loop playsinline class="video-bg">
             <source src="video/video.mp4" type="video/mp4">
@@ -291,88 +304,97 @@
     </div>
     <div class="overlay"></div>
 
-    <!-- Conteúdo Principal -->
+    <!-- Perfil -->
     <header class="header reveal d-1">
         <div class="logo-profile">
             <img src="images/logo.png" alt="Renova Luz Logo">
         </div>
-        <h1>Renovaluz</h1>
-        <p>O Futuro começa aqui.</p>
+        <h1>Renova Luz</h1>
+        <p>Especialistas em Iluminação & Tecnologia</p>
     </header>
 
+    <!-- Links Oficiais -->
     <div class="container">
+        
         <!-- Site Oficial -->
         <a href="https://renovaluz.ao/index.html" class="link-item btn-highlight reveal d-2" target="_blank">
-            <i class="fas fa-external-link-alt"></i>
-            <span>Site Oficial Renova Luz</span>
+            <i class="fas fa-globe"></i>
+            <span>SITE OFICIAL RENOVA LUZ</span>
         </a>
 
-        <!-- Redes Sociais -->
+        <!-- Facebook -->
         <a href="https://bit.ly/4wgQ8FB" class="link-item reveal d-3" target="_blank">
             <i class="fab fa-facebook-f"></i>
             <span>Facebook Oficial</span>
         </a>
 
+        <!-- Instagram -->
         <a href="https://www.instagram.com/renovaluzoficial/" class="link-item reveal d-4" target="_blank">
             <i class="fab fa-instagram"></i>
             <span>Instagram @renovaluz</span>
         </a>
 
+        <!-- LinkedIn -->
         <a href="https://www.linkedin.com/in/renovaluz-oficial-57956a377/" class="link-item reveal d-5" target="_blank">
             <i class="fab fa-linkedin-in"></i>
             <span>LinkedIn Corporativo</span>
         </a>
 
-        <!-- Atendimento -->
+        <!-- WhatsApp Renova Luz -->
         <a href="https://wa.me/244948504916" class="link-item reveal d-6" target="_blank">
             <i class="fab fa-whatsapp"></i>
             <span>WhatsApp: Renova Luz</span>
         </a>
 
+        <!-- WhatsApp Renovatech -->
         <a href="https://wa.me/244926955286" class="link-item reveal d-7" target="_blank">
             <i class="fab fa-whatsapp"></i>
             <span>WhatsApp: Renovatech</span>
         </a>
 
-        <!-- QR Code Card Floating -->
+        <!-- QR Code Card -->
         <div class="qr-card reveal d-7">
             <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://renovaluz.ao/index.html&color=018a13&bgcolor=ffffff" alt="QR Code" id="dynamic-qr">
-            <p>Escaneie para acessar</p>
+            <p>CONECTE-SE AO SITE</p>
         </div>
     </div>
 
     <footer class="reveal d-7">
-        &copy; 2026 RENOVALUZ | RENOVATECH
+        &copy; 2026 RENOVA LUZ | RENOVATECH <br> Todos os direitos reservados.
     </footer>
 
     <script>
-        // Inteligência para atualizar o QR Code caso o sistema mude em tempo real
-        const updateQR = () => {
+        /**
+         * Lógica de Sincronização de QR Code com Tema do Sistema
+         */
+        const syncThemeAssets = () => {
             const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
             const qrImg = document.getElementById('dynamic-qr');
             
             if (isDark) {
-                // QR para modo escuro (Fundo Branco, código Verde)
+                // QR para Modo Escuro: Fundo Branco para leitura perfeita no escuro
                 qrImg.src = "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://renovaluz.ao/index.html&color=018a13&bgcolor=ffffff";
             } else {
-                // QR para modo claro (Fundo Verde Escuro, código Branco)
+                // QR para Modo Claro: Inverte para manter o contraste estético
                 qrImg.src = "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://renovaluz.ao/index.html&color=ffffff&bgcolor=004800";
             }
         };
 
-        // Escutar mudança de tema do sistema sem recarregar a página
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateQR);
+        // Ouvinte de mudança de tema em tempo real
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', syncThemeAssets);
         
-        // Executar ao carregar
-        updateQR();
+        // Inicialização
+        syncThemeAssets();
 
-        // Efeito Magnético Sutil para Desktop
+        /**
+         * Efeito Magnético Sutil (Interatividade Sênior)
+         */
         document.querySelectorAll('.link-item').forEach(btn => {
             btn.addEventListener('mousemove', (e) => {
                 const rect = btn.getBoundingClientRect();
                 const x = e.clientX - rect.left - rect.width / 2;
                 const y = e.clientY - rect.top - rect.height / 2;
-                btn.style.transform = `scale(1.05) translate(${x * 0.15}px, ${y * 0.2}px)`;
+                btn.style.transform = `scale(1.04) translate(${x * 0.1}px, ${y * 0.15}px)`;
             });
             btn.addEventListener('mouseleave', () => {
                 btn.style.transform = `scale(1) translate(0, 0)`;
