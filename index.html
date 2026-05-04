@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renova Luz | Conexão de Energia</title>
+    
+    <!-- Tipografia e Ícones Premium -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ==========================================================================
+           SISTEMA DE CORES DINÂMICO (Design System)
+           ========================================================================== */
+        
+        :root {
+            /* PADRÃO: MODO CLARO (Sistema Apple Clean) */
+            --primary: #018a13;
+            --primary-glow: rgba(1, 138, 19, 0.3);
+            --bg-overlay: rgba(255, 255, 255, 0.85);
+            --text-color: #004800;
+            --glass-bg: rgba(255, 255, 255, 0.4);
+            --glass-border: rgba(1, 138, 19, 0.2);
+            --card-hover: rgba(1, 138, 19, 0.08);
+            --qr-bg: #004800;
+            --qr-text: #ffffff;
+            --logo-border: #018a13;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                /* AUTOMÁTICO: MODO ESCURO (Energy Mode) */
+                --bg-overlay: linear-gradient(180deg, rgba(0, 40, 0, 0.8) 0%, rgba(0, 0, 0, 0.95) 100%);
+                --primary: #018a13;
+                --primary-glow: rgba(1, 138, 19, 0.6);
+                --text-color: #ffffff;
+                --glass-bg: rgba(255, 255, 255, 0.08);
+                --glass-border: rgba(255, 255, 255, 0.15);
+                --card-hover: rgba(255, 255, 255, 0.12);
+                --qr-bg: #ffffff;
+                --qr-text: #004800;
+                --logo-border: #ffffff;
+            }
+        }
+
+        /* ==========================================================================
+           RESET E ESTRUTURA
+           ========================================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000;
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Background Video */
+        .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+
+        .video-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-overlay);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: -1;
+            transition: background 0.8s ease;
+        }
+
+        /* ==========================================================================
+           COMPONENTES
+           ========================================================================== */
+
+        .header {
+            padding: 60px 20px 30px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .logo-profile {
+            width: 135px;
+            height: 135px;
+            background: #ffffff;
+            border-radius: 50%;
+            padding: 22px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid var(--logo-border);
+            box-shadow: 0 0 40px var(--primary-glow);
+            animation: pulse 3s infinite ease-in-out;
+            transition: border 0.5s ease;
+        }
+
+        .logo-profile img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            font-weight: 400;
+            max-width: 280px;
+            margin: 0 auto;
+        }
+
+        /* Links Grid */
+        .container {
+            width: 90%;
+            max-width: 420px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding-bottom: 50px;
+            z-index: 1;
+        }
+
+        .link-item {
+            position: relative;
+            text-decoration: none;
+            color: var(--text-color);
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 20px 25px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+        }
+
+        .link-item i {
+            width: 30px;
+            font-size: 1.3rem;
+            margin-right: 15px;
+            color: var(--primary);
+            text-align: center;
+        }
+
+        .link-item:hover {
+            transform: scale(1.05);
+            background: var(--card-hover);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Destaque: Site Oficial */
+        .btn-highlight {
+            background: var(--primary) !important;
+            color: #ffffff !important;
+            border: none;
+            box-shadow: 0 15px 35px var(--primary-glow);
+        }
+
+        .btn-highlight i { color: #ffffff !important; }
+
+        .btn-highlight::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: rotate(45deg);
+            animation: shimmer 3.5s infinite;
+        }
+
+        /* QR Code Placa Minimalista */
+        .qr-card {
+            background: var(--qr-bg);
+            padding: 30px;
+            border-radius: 28px;
+            text-align: center;
+            margin-top: 25px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            width: fit-content;
+            align-self: center;
+            transition: all 0.5s ease;
+        }
+
+        .qr-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .qr-card p {
+            color: var(--qr-text);
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        footer {
+            margin: 60px 0 40px;
+            font-size: 0.75rem;
+            opacity: 0.5;
+            text-align: center;
+            letter-spacing: 1px;
+            z-index: 1;
+        }
+
+        /* ==========================================================================
+           ANIMATIONS
+           ========================================================================== */
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 25px var(--primary-glow); }
+            50% { box-shadow: 0 0 50px var(--primary); transform: scale(1.02); }
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            animation: revealAnim 0.8s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        @keyframes revealAnim {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Stagger Delays */
+        .d-1 { animation-delay: 0.1s; }
+        .d-2 { animation-delay: 0.2s; }
+        .d-3 { animation-delay: 0.3s; }
+        .d-4 { animation-delay: 0.4s; }
+        .d-5 { animation-delay: 0.5s; }
+        .d-6 { animation-delay: 0.6s; }
+        .d-7 { animation-delay: 0.7s; }
+
+    </style>
+</head>
+<body>
+
+    <!-- Background Engine -->
+    <div class="video-container">
+        <video autoplay muted loop playsinline class="video-bg">
+            <source src="video/video.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="overlay"></div>
+
+    <!-- Conteúdo Principal -->
+    <header class="header reveal d-1">
+        <div class="logo-profile">
+            <img src="images/logo.png" alt="Renova Luz Logo">
+        </div>
+        <h1>Renovaluz</h1>
+        <p>O Futuro começa aqui.</p>
+    </header>
+
+    <div class="container">
+        <!-- Site Oficial -->
+        <a href="https://renovaluz.ao/index.html" class="link-item btn-highlight reveal d-2" target="_blank">
+            <i class="fas fa-external-link-alt"></i>
+            <span>Site Oficial Renova Luz</span>
+        </a>
+
+        <!-- Redes Sociais -->
+        <a href="https://bit.ly/4wgQ8FB" class="link-item reveal d-3" target="_blank">
+            <i class="fab fa-facebook-f"></i>
+            <span>Facebook Oficial</span>
+        </a>
+
+        <a href="https://www.instagram.com/renovaluzoficial/" class="link-item reveal d-4" target="_blank">
+            <i class="fab fa-instagram"></i>
+            <span>Instagram @renovaluz</span>
+        </a>
+
+        <a href="https://www.linkedin.com/in/renovaluz-oficial-57956a377/" class="link-item reveal d-5" target="_blank">
+            <i class="fab fa-linkedin-in"></i>
+            <span>LinkedIn Corporativo</span>
+        </a>
+
+        <!-- Atendimento -->
+        <a href="https://wa.me/244948504916" class="link-item reveal d-6" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            <span>WhatsApp: Renova Luz</span>
+        </a>
+
+        <a href="https://wa.me/244926955286" class="link-item reveal d-7" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            <span>WhatsApp: Renovatech</span>
+        </a>
+
+        <!-- QR Code Card Floating -->
+        <div class="qr-card reveal d-7">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://renovaluz.ao/index.html&color=018a13&bgcolor=ffffff" alt="QR Code" id="dynamic-qr">
+            <p>Escaneie para acessar</p>
+        </div>
+    </div>
+
+    <footer class="reveal d-7">
+        &copy; 2026 RENOVALUZ | RENOVATECH
+    </footer>
+
+    <script>
+        // Inteligência para atualizar o QR Code caso o sistema mude em tempo real
+        const updateQR = () => {
+            const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const qrImg = document.getElementById('dynamic-qr');
+            
+            if (isDark) {
+                // QR para modo escuro (Fundo Branco, código Verde)
+                qrImg.src = "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://renovaluz.ao/index.html&color=018a13&bgcolor=ffffff";
+            } else {
+                // QR para modo claro (Fundo Verde Escuro, código Branco)
+                qrImg.src = "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://renovaluz.ao/index.html&color=ffffff&bgcolor=004800";
+            }
+        };
+
+        // Escutar mudança de tema do sistema sem recarregar a página
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateQR);
+        
+        // Executar ao carregar
+        updateQR();
+
+        // Efeito Magnético Sutil para Desktop
+        document.querySelectorAll('.link-item').forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                btn.style.transform = `scale(1.05) translate(${x * 0.15}px, ${y * 0.2}px)`;
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = `scale(1) translate(0, 0)`;
+            });
+        });
+    </script>
+</body>
+</html>
